@@ -1,0 +1,15 @@
+%{ for item in data.apps ~}
+resource "users" "${item.appname}" {
+    appname = "${item.appname}"
+    version = "${item.appversion}"
+    content = "${item.content != null ? item.content : ""}"
+}
+%{ endfor ~}
+
+%{ for item in data.users ~}
+resource "apps" "${item.username}" {
+    username = "${item.username}"
+    age = "${item.age}"
+    content = "${item.content != null ? item.content : ""}"
+}
+%{ endfor ~}

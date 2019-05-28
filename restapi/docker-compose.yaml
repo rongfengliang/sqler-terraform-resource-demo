@@ -1,0 +1,18 @@
+version: "3"
+services:
+  sqler:
+    image: dalongrong/sqler:2.0
+    volumes:
+    - "./config/config-example.hcl:/app/config.example.hcl"
+    environment:
+    - "DRIVER=postgres" 
+    - "DSN=postgresql://postgres:dalong@postgres:5432/postgres?sslmode=disable"
+    ports:
+    - "3678:3678"
+    - "8025:8025"
+  postgres:
+    image: postgres:9.6.11s
+    ports:
+    - "5432:5432"
+    environment:
+    - "POSTGRES_PASSWORD:dalong"
